@@ -46,7 +46,7 @@ Before using this Terraform project, ensure you have the following:
 o	An AWS account with sufficient permissions to create EKS clusters, VPCs, subnets, IAM roles, and other resources.
 2.	AWS CLI:
 o	Install the AWS CLI and configure it with your credentials:
-aws configure
+               aws configure
 
 3.	Terraform: 
 o	Install Terraform (v1.0.0 or higher).
@@ -111,7 +111,7 @@ Step 1: Set Up AWS Credentials
 
 Ensure your AWS credentials are configured. You can set them as environment variables or use the AWS CLI:
 
-               AWS CLI
+ aws cli
 
 export AWS_ACCESS_KEY_ID="your-access-key-id"
 
