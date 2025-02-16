@@ -121,7 +121,11 @@ Step 1: Clone the Repository
 
               cd app
 
-Step 2: Install Dependencies
+Step 2: Install Dependencies and python3-pip and docker
+
+              sudo apt  install docker.io
+
+              sudo apt install python3-pip
 
               pip install -r requirements.txt
 
