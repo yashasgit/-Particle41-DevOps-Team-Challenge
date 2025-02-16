@@ -65,7 +65,6 @@ Table of Contents
 8.	How to Push Code to GitHub
 9.	Troubleshooting
 10.	Best Practices
-11.	References
 
 ________________________________________
 
