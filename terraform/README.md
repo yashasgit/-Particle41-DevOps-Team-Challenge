@@ -110,6 +110,7 @@ How to Use
 Step 1: Set Up AWS Credentials
 
 Ensure your AWS credentials are configured. You can set them as environment variables or use the AWS CLI:
+               AWS CLI
 
 export AWS_ACCESS_KEY_ID="your-access-key-id"
 
@@ -123,17 +124,17 @@ Step 2: Clone the Repository
 
 Clone this repository to your local machine:
 
-git clone https://github.com/yashasgit/Particle41-DevOps-Team-Challenge.git 
+         git clone https://github.com/yashasgit/Particle41-DevOps-Team-Challenge.git 
 
-cd Particle41-DevOps-Team-Challenge
+         cd Particle41-DevOps-Team-Challenge
 
-cd terraform
+         cd terraform
 
 Step 3: Initialize Terraform
 
 Initialize Terraform to download the required providers:
 
-terraform init
+         terraform init
 
 
 
@@ -143,13 +144,13 @@ Step 4: Plan and Apply
 
 Generate an execution plan to review the changes:
 
-terraform plan
+           terraform plan
 
 3.	Apply:
 
 Apply the configuration to create the resources:
 
-terraform apply
+            terraform apply
 
 Confirm the action by typing yes when prompted.
 
@@ -173,7 +174,7 @@ Clean Up
 
 To destroy all resources created by this Terraform configuration, run:
 
-terraform destroy
+              terraform destroy
 
 Confirm the action by typing yes when prompted.
 
