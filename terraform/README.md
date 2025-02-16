@@ -50,9 +50,10 @@ o	Install the AWS CLI and configure it with your credentials:
 
 3.	Terraform: 
 o	Install Terraform (v1.0.0 or higher).
+          sudo snap install terraform --classic
 
 
-4.	SSH Key Pair:
+5.	SSH Key Pair:
 o	Create an SSH key pair in the AWS region (ap-south-1) where the EKS cluster will be deployed. Replace yashaskey in the aws eks node group resource with your key pair name.
 ________________________________________
 Project Structure
