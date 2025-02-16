@@ -50,6 +50,7 @@ o	Install the AWS CLI and configure it with your credentials:
 
 3.	Terraform: 
 o	Install Terraform (v1.0.0 or higher).
+
           sudo snap install terraform --classic
 
 
