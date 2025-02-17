@@ -162,7 +162,7 @@ Run the following command to clone the repository:
      
      cd Particle41-DevOps-Team-Challenge
      
-     cd terraform
+     cd app
 
 
 Step 2:  Install Python3, Docker, Flask
