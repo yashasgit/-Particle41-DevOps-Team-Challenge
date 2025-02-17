@@ -14,7 +14,7 @@ app/
 
 ├── README.md             # Documentation
 
-└── .gitignore            # Git ignore file
+└── .dockergnore            # docker ignore file
 
 Step 1: Create the SimpleTimeService Microservice
 
