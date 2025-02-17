@@ -113,7 +113,7 @@ Step 1: Set Up AWS Credentials
 
 Ensure your AWS credentials are configured. You can set them as environment variables or use the AWS CLI:
 
- aws cli
+      aws cli
 
 export AWS_ACCESS_KEY_ID="your-access-key-id"
 
