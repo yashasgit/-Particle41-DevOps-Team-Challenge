@@ -1,101 +1,10 @@
-REQIREMENT
+Task 1: Minimalist Application Development / Docker / Kubernetes
 
-Minimalist Application Development / Docker / Kubernetes
-
-Tiny App Development: 'SimpleTimeService'
-
-•	Create a simple microservice (which we will call "SimpleTimeService") in any programming language of your choice: Go, NodeJS, Python, C#, Ruby, whatever you like.
-
-•	The application should be a web server that returns a pure JSON response with the following structure, when its / URL path is accessed:
-
-{
-  "timestamp": "<current date and time>",
-  "ip": "<the IP address of the visitor>"
-}
-
-Dockerize SimpleTimeService
-
-•	Create a Dockerfile for this microservice.
-
-•	Your application MUST be configured to run as a non-root user in the container.
-
-Build SimpleTimeService image
-
-•	Publish the image to a public container registry (for example, DockerHub) so we can pull it for testing.
-
-Push your code to a public git repository
-
-•	Push your code to a public git repository in the platform of your choice (e.g. GitHub, GitLab, Bitbucket, etc.). MAKE SURE YOU DON'T PUSH ANY SECRETS LIKE API KEYS TO A PUBLIC REPO!
-
-•	We have a recommended repository structure here.
-
-
-ACCEPTANCE CRITERIA
-
-Your task will be considered successful if a colleague is able to build/run your container, and the application gives the correct response.
-
-docker build must be the only command needed to build your container, and docker run must be the only command needed to run your container. Your container must run and stay running.
-
-Other criteria for evaluation will be:
-
-•	Documentation: you MUST add a README file with instructions to deploy your application.
-
-•	Code quality and style: your code must be easy for others to read, and properly documented when relevant.
-
-•	Container best practices: your container image should be as small as possible, without unnecessary bloat.
-
-•	Container best practices: your application MUST be running as a non-root user, as specified in the exercise.
-
-
-SIMPLE_TIME_SERVICE
-
-                            
-A minimalist Python microservice that returns the current timestamp and the visitor's IP address in JSON format.
-
-________________________________________
-Table of Contents
-
-1.	Overview
-2.	Prerequisites
-3.	Repository Structure
-4.	How to Run Locally
-5.	How to Run Using Docker
-6.	How to Use the Service
-7.	How to Deploy to DockerHub
-8.	How to Push Code to GitHub
-9.	Troubleshooting
-10.	Best Practices
+In this task, we will create a simple microservice called SimpleTimeService that returns the current date and time along with the visitor's IP address in JSON format. We will then Dockerize the application, publish it to a public container registry, and push the code to a public Git repository.
 
 ________________________________________
 
-Overview
-
-The SimpleTimeService is a simple Python microservice built using Flask. It serves as a web server that returns a JSON response when accessed. The response includes:
-
-•	The current date and time (timestamp).
-
-•	The IP address of the visitor (ip).
-
-The application is containerized using Docker, runs as a non-root user, and is published to a public container registry (e.g., DockerHub). The code is hosted in a public Git repository.
-
-________________________________________
-
-Prerequisites
-
-Before starting, ensure you have the following installed:
-
-1.	Python 3.9 or later.
-
-2.	Docker installed on your machine.
-
-3.	A DockerHub account (or any other container registry account)
-  
-4.	Git installed for version control.
-
-________________________________________
 Repository Structure
-
-Copy
 
 app/
 
@@ -103,189 +12,205 @@ app/
 
 ├── Dockerfile            # Dockerfile for containerization
 
-├── requirements.txt      # Python dependencies
-
 ├── README.md             # Documentation
 
 └── .gitignore            # Git ignore file
 
+Step 1: Create the SimpleTimeService Microservice
+
+We will use Python with the Flask framework to create the microservice.
+
+1.1 Install Python3, docker, Flask
+
+First, install Python and docker on your system. Then, install Flask using pip:
+
+     sudo apt install python3-pip -y
+
+     sudo apt  install docker.io -y
+
+     sudo apt install python3-flask -y
+
+1.2 Create the Application
+
+Create a file named app.py with python code:
+
+~1.3 Test the Application Locally
+
+Run the application:
+
+     python app.py
+
+Visit      http://localhost:8080      in your browser or use curl:
+
+curl http://localhost:8080
+
+You should see a JSON response like:
+{
+  "timestamp": "2023-10-25T12:34:56.789Z",
+  "ip": "127.0.0.1"
+}
 ________________________________________
 
-How to Run Locally
+Step 2: Dockerize the Application
+
+2.1 Create a Dockerfile
+
+Create a file named Dockerfile :
+
+2.2 Create a .dockerignore File
+
+Create a .dockerignore file to exclude unnecessary files from the Docker build context:
+
+.git
+
+__pycache__
+
+*.pyc
+
+2.3 Add Your User to the docker Group 
+
+To avoid using sudo for Docker commands, add your user to the docker group:
+
+1.	Add your user to the docker group:
+   
+        sudo usermod -aG docker $USER
+
+2.	Log out and log back in, or refresh your session:
+
+        newgrp docker
+ 
+3.	Verify that you can run Docker commands without sudo:
+
+        docker ps
+
+2.4 Build the Docker Image
+
+Run the following command to build the Docker image:
+
+     docker build -t simple-time-service .
+
+2.5 Run the Docker Container
+
+Run the container:
+
+          docker run -p 8080:8080 simple-time-service
+
+Test the service:
+
+     Visit http://localhost:8080 in your browser 
+
+________________________________________
+
+Step 3: Publish the Docker Image to a Public Registry
+
+3.1 Tag the Docker Image
+
+Tag the image with your DockerHub username:
+
+     docker tag simple-time-service yashasdocker/simple-time-service:latest (change user name)
+
+3.2 Push the Docker Image
+
+Log in to DockerHub:
+
+     docker login
+     
+3.3 push the image
+
+     docker push yashasdocker /simple-time-service:latest  (change user name)
+
+________________________________________
+
+Step 4: Push the Code to a Public Git Repository
+
+4.1 Initialize a Git Repository
+
+     git init
+
+4.2 Add Files and Commit
+
+     git add .
+
+     git commit -m "Initial commit: SimpleTimeService microservice"
+
+4.3 Create a Remote Repository
+
+Create a new repository on GitHub,
+
+4.4 Push the Code
+
+     git remote add origin <repository-url>
+
+     git branch -M main
+
+     git push -u origin main
+
+
+
+==================================================================================
+
+
+How to use
+
+==================================================================================
 
 Step 1: Clone the Repository
 
-              git clone https://github.com/yashasgit/Particle41-DevOps-Team-Challenge.git
+Run the following command to clone the repository:
 
-              cd Particle41-DevOps-Team-Challenge
+     git clone https://github.com/yashasgit/Particle41-DevOps-Team-Challenge.git
 
-              cd app
+Step 2:  Install Python3, Docker, Flask
 
-Step 2: Install Dependencies and python3-pip and docker
+First, install Python and docker on your system. Then, install Flask using pip:
 
-              sudo apt  install docker.io
+     sudo apt install python3-pip -y
 
-              sudo apt install python3-pip
+     sudo apt  install docker.io -y
 
-              sudo apt-get install requirements.txt
+     sudo apt install python3-flask -y
 
-Step 3: Run the Application
+Step 3:   Add Your User to the docker Group 
 
-             python app.py
+To avoid using sudo for Docker commands, add your user to the docker group:
 
-Step 4: Access the Service
-
-Open your browser or use curl to access the service: (local host = public ip address)
-
-          Curl http://localhost:5000
-
-________________________________________
-
-How to Run Using Docker
-
-Step 1: Build the Docker Image
-
-           docker build -t simple-time-service:latest .
-
-Step 2: Run the Docker Container
-
-         docker run -d -p 5000:5000 simple-time-service:latest
-
-Step 3: Access the Service
-
-           Open your browser or use curl to access the service:
-
-            curl http://localhost:5000
-
-________________________________________
-
-How to Use the Service
-
-Once the service is running (either locally or in a Docker container), you can interact with it using the following methods:
-
-1. Using a Web Browser
- 
-1.	Open your web browser.
+1.	Add your user to the docker group:
    
-3.	Navigate to http://localhost:5000.
+          sudo usermod -aG docker $USER
+
+2.	Log out and log back in, or refresh your session:
    
-5.	You will see a JSON response like this:
-   
-{
+          newgrp docker
 
-  "ip": "223.185.128.101",
-  
-  "timestamp": "2025-02-16T17:44:55.975596Z"
-  
-}
+3.	Verify that you can run Docker commands without sudo:
 
-2. Using curl
-   
-1.	Open a terminal.
-   
-3.	Run the following command:
-   
-curl http://localhost:5000
+          docker ps
 
-6.	You will see a JSON response like this:
-   
-Json
-{
-  "ip": "223.185.128.101",
-  
-  "timestamp": "2025-02-16T17:44:55.975596Z"
-  
-}
+Step 4:   Pull the Docker Image
+
+Run the following command to pull the image:
+
+     docker pull yashasdocker/simple-time-service:latest
+
+Step 5: Upgrade all installed packages on your Ubuntu system to their latest versions.
+
+     sudo apt-get upgrade -y
+
+Step 6: Build a Docker image from a Dockerfile in the current directory (.)
+
+     docker build -t simple-time-service .
+
+Step 6: Run a Docker container from the image 
+
+     docker run -p 8080:8080 yashasdocker/simple-time-service
+
+Step 6: Test the service
+
+     http://localhost:8080 
 
 
-________________________________________
 
-How to Deploy to DockerHub
 
-Step 1: Log in to DockerHub
 
-          docker login
-
-Step 2: Tag the Docker Image (replace your-dockerhub-username)
-
-         docker tag simple-time-service:latest yashasdocker /simple-time-service:latest
-
-Step 3: Push the Docker Image (replace your-dockerhub-username)
-
-          docker push  yashasdocker /simple-time-service:latest
-
-Step 4: Pull and Run the Image (replace your-dockerhub-username)
-
-        docker pull yashasdocker /simple-time-service:latest
-
-        docker run -d -p 5000:5000  yashasdocker /simple-time-service:latest
-
-________________________________________
-
-How to Push Code to GitHub
-
-Step 1: Initialize a Git Repository
-
-         git init
-
-Step 2: Add Files to the Repository
-
-      git add .
-
-Step 3: Commit the Changes
-
-       git commit -m "Initial commit: SimpleTimeService microservice"
-
-Step 4: Add the Remote Repository
-
-       git remote add origin https://github.com/yashasgit/Particle41-DevOps-Team-Challenge.git
-
-Step 5: Push the Code
-
-        git branch -M main
-
-        git push -u origin main
-
-________________________________________
-
-Troubleshooting
-
-1. Permission Denied for Docker
-2. 
-If you encounter permission issues while running Docker commands:
-
-•	Add your user to the docker group:
-
-       sudo usermod -aG docker $USER
-
-       newgrp docker
-
-•	Alternatively, use sudo:
-
-       sudo docker build -t simple-time-service:latest .
-
-4. Port Conflict
-
-If port 5000 is already in use, change the host port in the docker run command:
-
-        docker run -d -p 5001:5000 simple-time-service:latest
-
-6. Repository Not Found
-
-Ensure the remote repository URL is correct:
-
-         git remote set-url origin https://github.com/yashasgit/Particle41-DevOps-Team-Challenge.git
-
-________________________________________
-
-Best Practices
-
-1.	Non-Root User:
-
-o	The application runs as a non-root user (myuser) inside the container for security.
-
-2.	Minimal Image Size:
-
-o	The python:3.9-slim base image is used to keep the container lightweight.
 
 
