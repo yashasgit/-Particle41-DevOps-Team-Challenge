@@ -159,6 +159,11 @@ Step 1: Clone the Repository
 Run the following command to clone the repository:
 
      git clone https://github.com/yashasgit/Particle41-DevOps-Team-Challenge.git
+     
+     cd Particle41-DevOps-Team-Challenge
+     
+     cd terraform
+
 
 Step 2:  Install Python3, Docker, Flask
 
